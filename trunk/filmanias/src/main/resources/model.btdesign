@@ -1,0 +1,64 @@
+Application MyApp {
+	basePackage=org.seke.filmanias
+	Module filmanias {
+
+		Entity Role {
+			!auditable
+			String name key;
+			- Set<@User> users <-> roles;
+		}
+		
+		Entity User {
+			!auditable
+			Long id key;
+			String username;
+			String password;
+			String eMail;
+			boolean accountNonExpired;
+			boolean accountNonLocked;
+			boolean credentialsNonExpired;
+			boolean enabled;
+			- Set<@Movie> movies <-> user;
+			- Set<@Comment> comments <-> user;
+			- Set<@Rating> ratings <-> user;
+			- Set<@Role> roles <-> users;
+		}
+
+		Entity Rating {
+			!auditable
+			Long id key;
+			- @User user key <-> ratings;
+			- @Movie movie key <-> ratings;
+			int mark;
+			Date inputDate;
+		}
+
+		Entity Comment {
+			!auditable
+			Long id key;
+			- @User user key <-> comments;
+			- @Movie movie key <-> comments;
+			String content;
+			Date inputDate;
+
+		}
+
+		Entity Movie {
+			!auditable
+			Long id key;
+			String name;
+			Date inputDate;
+			Double rank;
+			- @User user nullable <-> movies;
+			- Set<@Comment> comments <-> movie;
+			- Set<@Rating> ratings <-> movie;
+			- Set<@Genre> genres <-> movies;
+		}
+
+		Entity Genre {
+			!auditable
+			String name key;
+			- Set<@Movie> movies <-> genres;
+		}
+	}
+}
