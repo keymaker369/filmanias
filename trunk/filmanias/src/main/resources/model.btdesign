@@ -6,6 +6,11 @@ Application MyApp {
 			!auditable
 			String name key;
 			- Set<@User> users <-> roles;
+			
+			Repository RoleDAORepository {
+				save;
+				findAll;
+			}
 		}
 		
 		Entity User {
@@ -22,6 +27,14 @@ Application MyApp {
 			- Set<@Comment> comments <-> user;
 			- Set<@Rating> ratings <-> user;
 			- Set<@Role> roles <-> users;
+			
+			Repository UserDAORepository {
+				save;
+				findById;
+				findAll;
+				@User getUser(String username);
+				delete;				
+			}
 		}
 
 		Entity Rating {
@@ -31,6 +44,10 @@ Application MyApp {
 			- @Movie movie key <-> ratings;
 			int mark;
 			Date inputDate;
+			
+			Repository RatingDAORepository {
+				save;
+			}
 		}
 
 		Entity Comment {
@@ -40,7 +57,10 @@ Application MyApp {
 			- @Movie movie key <-> comments;
 			String content;
 			Date inputDate;
-
+			
+			Repository CommentDAORepository {
+				save;
+			}
 		}
 
 		Entity Movie {
@@ -53,12 +73,24 @@ Application MyApp {
 			- Set<@Comment> comments <-> movie;
 			- Set<@Rating> ratings <-> movie;
 			- Set<@Genre> genres <-> movies;
+			
+			Repository MovieDAORepository {
+				save;
+				findAll;
+				List<@Movie> retrieveMoviesStartingWith(String movieName);
+			}
 		}
 
 		Entity Genre {
 			!auditable
 			String name key;
 			- Set<@Movie> movies <-> genres;
+			
+			Repository GenreDAORepository {
+				save;
+				findAll;
+				@Genre findGenreByName(String name);
+			}
 		}
 	}
 }
