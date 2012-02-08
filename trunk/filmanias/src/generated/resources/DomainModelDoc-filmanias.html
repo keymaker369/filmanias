@@ -25,15 +25,29 @@
 			
 				<li><a href="DomainModelDoc-filmanias.html#Comment">Comment</a></li>
 
+				<li><a href="DomainModelDoc-filmanias.html#CommentService">CommentService</a></li>
+
 				<li><a href="DomainModelDoc-filmanias.html#Genre">Genre</a></li>
 
+				<li><a href="DomainModelDoc-filmanias.html#GenreBeanDto">GenreBeanDto</a></li>
+
+				<li><a href="DomainModelDoc-filmanias.html#GenreService">GenreService</a></li>
+
 				<li><a href="DomainModelDoc-filmanias.html#Movie">Movie</a></li>
+
+				<li><a href="DomainModelDoc-filmanias.html#MovieBeanDto">MovieBeanDto</a></li>
+
+				<li><a href="DomainModelDoc-filmanias.html#MovieService">MovieService</a></li>
 
 				<li><a href="DomainModelDoc-filmanias.html#Rating">Rating</a></li>
 
 				<li><a href="DomainModelDoc-filmanias.html#Role">Role</a></li>
 
+				<li><a href="DomainModelDoc-filmanias.html#RoleService">RoleService</a></li>
+
 				<li><a href="DomainModelDoc-filmanias.html#User">User</a></li>
+
+				<li><a href="DomainModelDoc-filmanias.html#UserService">UserService</a></li>
 
 			</ul>
 
@@ -52,6 +66,653 @@
 	<div id="services">
 	<hr/>
 	
+	<a name="CommentService"></a>
+	<h3>CommentService</h3>
+	<p></p>
+	
+	<div id="operation">
+	<b>saveComment</b>
+	<p></p>
+	
+		<div id="operation_parameters">
+		<p>Parameters:</p>
+		<ul>
+		
+	<li>
+	
+		org.fornax.cartridges.sculptor.framework.errorhandling.ServiceContext
+	
+ ctx</li>
+
+	<li>
+	
+		<a href="DomainModelDoc-filmanias.html#Comment">Comment</a>
+	
+ comment</li>
+
+	<li>
+	
+		<a href="DomainModelDoc-filmanias.html#User">User</a>
+	
+ user</li>
+
+		</ul>
+		</div>
+	
+	
+	</div>
+
+	<hr/>
+
+	<a name="GenreService"></a>
+	<h3>GenreService</h3>
+	<p></p>
+	
+	<div id="operation">
+	<b>getAllGenreBeans</b>
+	<p></p>
+	
+		<div id="operation_parameters">
+		<p>Parameters:</p>
+		<ul>
+		
+	<li>
+	
+		org.fornax.cartridges.sculptor.framework.errorhandling.ServiceContext
+	
+ ctx</li>
+
+		</ul>
+		</div>
+	
+	
+		<div id="operation_returns">
+		<p>Returns:</p>
+		<ul><li>
+	
+		List&lt;GenreBeanDto&gt;
+	
+ </li></ul>
+		</div>
+	
+	</div>
+
+	<div id="operation">
+	<b>getAllGenres</b>
+	<p></p>
+	
+		<div id="operation_parameters">
+		<p>Parameters:</p>
+		<ul>
+		
+	<li>
+	
+		org.fornax.cartridges.sculptor.framework.errorhandling.ServiceContext
+	
+ ctx</li>
+
+		</ul>
+		</div>
+	
+	
+		<div id="operation_returns">
+		<p>Returns:</p>
+		<ul><li>
+	
+		List&lt;<a href="DomainModelDoc-filmanias.html#Genre">Genre</a>&gt;
+	
+ </li></ul>
+		</div>
+	
+	</div>
+
+	<div id="operation">
+	<b>retrieveGenre</b>
+	<p></p>
+	
+		<div id="operation_parameters">
+		<p>Parameters:</p>
+		<ul>
+		
+	<li>
+	
+		org.fornax.cartridges.sculptor.framework.errorhandling.ServiceContext
+	
+ ctx</li>
+
+	<li>
+	
+		String
+	
+ name</li>
+
+		</ul>
+		</div>
+	
+	
+		<div id="operation_returns">
+		<p>Returns:</p>
+		<ul><li>
+	
+		<a href="DomainModelDoc-filmanias.html#Genre">Genre</a>
+	
+ </li></ul>
+		</div>
+	
+	</div>
+
+	<div id="operation">
+	<b>save</b>
+	<p></p>
+	
+		<div id="operation_parameters">
+		<p>Parameters:</p>
+		<ul>
+		
+	<li>
+	
+		org.fornax.cartridges.sculptor.framework.errorhandling.ServiceContext
+	
+ ctx</li>
+
+	<li>
+	
+		<a href="DomainModelDoc-filmanias.html#Genre">Genre</a>
+	
+ entity</li>
+
+		</ul>
+		</div>
+	
+	
+		<div id="operation_returns">
+		<p>Returns:</p>
+		<ul><li>
+	
+		<a href="DomainModelDoc-filmanias.html#Genre">Genre</a>
+	
+ </li></ul>
+		</div>
+	
+	</div>
+
+	<div id="operation">
+	<b>updateGenre</b>
+	<p></p>
+	
+		<div id="operation_parameters">
+		<p>Parameters:</p>
+		<ul>
+		
+	<li>
+	
+		org.fornax.cartridges.sculptor.framework.errorhandling.ServiceContext
+	
+ ctx</li>
+
+	<li>
+	
+		<a href="DomainModelDoc-filmanias.html#Genre">Genre</a>
+	
+ genre</li>
+
+		</ul>
+		</div>
+	
+	
+		<div id="operation_returns">
+		<p>Returns:</p>
+		<ul><li>
+	
+		<a href="DomainModelDoc-filmanias.html#Genre">Genre</a>
+	
+ </li></ul>
+		</div>
+	
+	</div>
+
+	<hr/>
+
+	<a name="MovieService"></a>
+	<h3>MovieService</h3>
+	<p></p>
+	
+	<div id="operation">
+	<b>addMovieComment</b>
+	<p></p>
+	
+		<div id="operation_parameters">
+		<p>Parameters:</p>
+		<ul>
+		
+	<li>
+	
+		org.fornax.cartridges.sculptor.framework.errorhandling.ServiceContext
+	
+ ctx</li>
+
+	<li>
+	
+		long
+	
+ movieId</li>
+
+	<li>
+	
+		<a href="DomainModelDoc-filmanias.html#Comment">Comment</a>
+	
+ comment</li>
+
+	<li>
+	
+		String
+	
+ username</li>
+
+		</ul>
+		</div>
+	
+	
+	</div>
+
+	<div id="operation">
+	<b>retrieveMovie</b>
+	<p></p>
+	
+		<div id="operation_parameters">
+		<p>Parameters:</p>
+		<ul>
+		
+	<li>
+	
+		org.fornax.cartridges.sculptor.framework.errorhandling.ServiceContext
+	
+ ctx</li>
+
+	<li>
+	
+		long
+	
+ id</li>
+
+		</ul>
+		</div>
+	
+	
+		<div id="operation_returns">
+		<p>Returns:</p>
+		<ul><li>
+	
+		<a href="DomainModelDoc-filmanias.html#Movie">Movie</a>
+	
+ </li></ul>
+		</div>
+	
+	</div>
+
+	<div id="operation">
+	<b>retrieveMoviesStartingWith</b>
+	<p></p>
+	
+		<div id="operation_parameters">
+		<p>Parameters:</p>
+		<ul>
+		
+	<li>
+	
+		org.fornax.cartridges.sculptor.framework.errorhandling.ServiceContext
+	
+ ctx</li>
+
+	<li>
+	
+		String
+	
+ movieName</li>
+
+		</ul>
+		</div>
+	
+	
+		<div id="operation_returns">
+		<p>Returns:</p>
+		<ul><li>
+	
+		List&lt;<a href="DomainModelDoc-filmanias.html#Movie">Movie</a>&gt;
+	
+ </li></ul>
+		</div>
+	
+	</div>
+
+	<div id="operation">
+	<b>retriveAllMovies</b>
+	<p></p>
+	
+		<div id="operation_parameters">
+		<p>Parameters:</p>
+		<ul>
+		
+	<li>
+	
+		org.fornax.cartridges.sculptor.framework.errorhandling.ServiceContext
+	
+ ctx</li>
+
+		</ul>
+		</div>
+	
+	
+		<div id="operation_returns">
+		<p>Returns:</p>
+		<ul><li>
+	
+		List&lt;<a href="DomainModelDoc-filmanias.html#Movie">Movie</a>&gt;
+	
+ </li></ul>
+		</div>
+	
+	</div>
+
+	<div id="operation">
+	<b>saveMovie</b>
+	<p></p>
+	
+		<div id="operation_parameters">
+		<p>Parameters:</p>
+		<ul>
+		
+	<li>
+	
+		org.fornax.cartridges.sculptor.framework.errorhandling.ServiceContext
+	
+ ctx</li>
+
+	<li>
+	
+		MovieBeanDto
+	
+ movieBean</li>
+
+		</ul>
+		</div>
+	
+	
+	</div>
+
+	<div id="operation">
+	<b>saveMovie</b>
+	<p></p>
+	
+		<div id="operation_parameters">
+		<p>Parameters:</p>
+		<ul>
+		
+	<li>
+	
+		org.fornax.cartridges.sculptor.framework.errorhandling.ServiceContext
+	
+ ctx</li>
+
+	<li>
+	
+		<a href="DomainModelDoc-filmanias.html#Movie">Movie</a>
+	
+ movie</li>
+
+		</ul>
+		</div>
+	
+	
+		<div id="operation_returns">
+		<p>Returns:</p>
+		<ul><li>
+	
+		<a href="DomainModelDoc-filmanias.html#Movie">Movie</a>
+	
+ </li></ul>
+		</div>
+	
+	</div>
+
+	<hr/>
+
+	<a name="RoleService"></a>
+	<h3>RoleService</h3>
+	<p></p>
+	
+	<div id="operation">
+	<b>retrieveAll</b>
+	<p></p>
+	
+		<div id="operation_parameters">
+		<p>Parameters:</p>
+		<ul>
+		
+	<li>
+	
+		org.fornax.cartridges.sculptor.framework.errorhandling.ServiceContext
+	
+ ctx</li>
+
+		</ul>
+		</div>
+	
+	
+		<div id="operation_returns">
+		<p>Returns:</p>
+		<ul><li>
+	
+		List&lt;<a href="DomainModelDoc-filmanias.html#Role">Role</a>&gt;
+	
+ </li></ul>
+		</div>
+	
+	</div>
+
+	<hr/>
+
+	<a name="UserService"></a>
+	<h3>UserService</h3>
+	<p></p>
+	
+	<div id="operation">
+	<b>deleteUser</b>
+	<p></p>
+	
+		<div id="operation_parameters">
+		<p>Parameters:</p>
+		<ul>
+		
+	<li>
+	
+		org.fornax.cartridges.sculptor.framework.errorhandling.ServiceContext
+	
+ ctx</li>
+
+	<li>
+	
+		String
+	
+ username</li>
+
+		</ul>
+		</div>
+	
+	
+	</div>
+
+	<div id="operation">
+	<b>retrieveAllUsers</b>
+	<p></p>
+	
+		<div id="operation_parameters">
+		<p>Parameters:</p>
+		<ul>
+		
+	<li>
+	
+		org.fornax.cartridges.sculptor.framework.errorhandling.ServiceContext
+	
+ ctx</li>
+
+		</ul>
+		</div>
+	
+	
+		<div id="operation_returns">
+		<p>Returns:</p>
+		<ul><li>
+	
+		List&lt;<a href="DomainModelDoc-filmanias.html#User">User</a>&gt;
+	
+ </li></ul>
+		</div>
+	
+	</div>
+
+	<div id="operation">
+	<b>retrieveUser</b>
+	<p></p>
+	
+		<div id="operation_parameters">
+		<p>Parameters:</p>
+		<ul>
+		
+	<li>
+	
+		org.fornax.cartridges.sculptor.framework.errorhandling.ServiceContext
+	
+ ctx</li>
+
+	<li>
+	
+		Long
+	
+ id</li>
+
+		</ul>
+		</div>
+	
+	
+		<div id="operation_returns">
+		<p>Returns:</p>
+		<ul><li>
+	
+		<a href="DomainModelDoc-filmanias.html#User">User</a>
+	
+ </li></ul>
+		</div>
+	
+	</div>
+
+	<div id="operation">
+	<b>retrieveUser</b>
+	<p></p>
+	
+		<div id="operation_parameters">
+		<p>Parameters:</p>
+		<ul>
+		
+	<li>
+	
+		org.fornax.cartridges.sculptor.framework.errorhandling.ServiceContext
+	
+ ctx</li>
+
+	<li>
+	
+		String
+	
+ username</li>
+
+		</ul>
+		</div>
+	
+	
+		<div id="operation_returns">
+		<p>Returns:</p>
+		<ul><li>
+	
+		<a href="DomainModelDoc-filmanias.html#User">User</a>
+	
+ </li></ul>
+		</div>
+	
+	</div>
+
+	<div id="operation">
+	<b>saveUser</b>
+	<p></p>
+	
+		<div id="operation_parameters">
+		<p>Parameters:</p>
+		<ul>
+		
+	<li>
+	
+		org.fornax.cartridges.sculptor.framework.errorhandling.ServiceContext
+	
+ ctx</li>
+
+	<li>
+	
+		<a href="DomainModelDoc-filmanias.html#User">User</a>
+	
+ user</li>
+
+		</ul>
+		</div>
+	
+	
+		<div id="operation_returns">
+		<p>Returns:</p>
+		<ul><li>
+	
+		<a href="DomainModelDoc-filmanias.html#User">User</a>
+	
+ </li></ul>
+		</div>
+	
+	</div>
+
+	<div id="operation">
+	<b>updateUser</b>
+	<p></p>
+	
+		<div id="operation_parameters">
+		<p>Parameters:</p>
+		<ul>
+		
+	<li>
+	
+		org.fornax.cartridges.sculptor.framework.errorhandling.ServiceContext
+	
+ ctx</li>
+
+	<li>
+	
+		<a href="DomainModelDoc-filmanias.html#User">User</a>
+	
+ user</li>
+
+		</ul>
+		</div>
+	
+	
+		<div id="operation_returns">
+		<p>Returns:</p>
+		<ul><li>
+	
+		<a href="DomainModelDoc-filmanias.html#User">User</a>
+	
+ </li></ul>
+		</div>
+	
+	</div>
+
+	<hr/>
+
 	</div>
 	<div id="consumers">
 	
@@ -240,6 +901,70 @@
 	
 	<hr/>
 
+	<a name="GenreBeanDto"></a>
+	<h3>GenreBeanDto</h3>
+	
+	<p><i> DTO</i></p>
+	
+
+
+
+	<p></p>
+	<table>
+		<thead>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Length</th>
+			<th>Mandatory</th>
+			<th>Changeable</th>
+			<th>Description</th>
+		</thead>
+
+	
+	
+	<tr>
+		<td>assigned</td>
+		<td>boolean</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>X</td>
+		<td>
+		
+</td>
+	</tr>
+			
+
+	
+	<tr>
+		<td>genre</td>
+		<td>Genre</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>X</td>
+		<td>
+		
+</td>
+	</tr>
+			
+
+	
+	<tr>
+		<td>name</td>
+		<td>String</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>X</td>
+		<td>
+		
+</td>
+	</tr>
+			
+
+
+	</table>
+	
+	<hr/>
+
 	<a name="Movie"></a>
 	<h3>Movie</h3>
 	
@@ -369,6 +1094,83 @@
 		<td>X</td>
 		<td>
 		Update counter used for optimistic locking
+</td>
+	</tr>
+			
+
+
+	</table>
+	
+	<hr/>
+
+	<a name="MovieBeanDto"></a>
+	<h3>MovieBeanDto</h3>
+	
+	<p><i> DTO</i></p>
+	
+
+
+
+	<p></p>
+	<table>
+		<thead>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Length</th>
+			<th>Mandatory</th>
+			<th>Changeable</th>
+			<th>Description</th>
+		</thead>
+
+	
+	
+	<tr>
+		<td>allGenres</td>
+		<td>List&lt;GenreBeanDto&gt;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>X</td>
+		<td>
+		
+</td>
+	</tr>
+			
+
+	
+	<tr>
+		<td>inputDate</td>
+		<td>Timestamp</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>X</td>
+		<td>
+		
+</td>
+	</tr>
+			
+
+	
+	<tr>
+		<td>name</td>
+		<td>String</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>X</td>
+		<td>
+		
+</td>
+	</tr>
+			
+
+	
+	<tr>
+		<td>user</td>
+		<td>User</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>X</td>
+		<td>
+		
 </td>
 	</tr>
 			

@@ -20,10 +20,10 @@
     </tx:attributes> 
   </tx:advice>  
   <aop:config> 
-    <aop:pointcut id="businessService" expression="execution(public * org.seke.filmanias..serviceapi.*.*(..))"/>  
-    <aop:pointcut id="readOnlyBusinessService" expression="execution(public * org.seke.filmanias..serviceapi.*.get*(..)) or execution(public * org.seke.filmanias..serviceapi.*.find*(..))"/>  
+    <aop:pointcut id="businessService" expression="execution(public * org.seke..serviceapi.*.*(..))"/>  
+    <aop:pointcut id="readOnlyBusinessService" expression="execution(public * org.seke..serviceapi.*.get*(..)) or execution(public * org.seke..serviceapi.*.find*(..))"/>  
     <!-- Repeating the expression, since I can't find a way to refer to the other pointcuts. -->  
-    <aop:pointcut id="updatingBusinessService" expression="execution(public * org.seke.filmanias..serviceapi.*.*(..)) and not (execution(public * org.seke.filmanias..serviceapi.*.get*(..)) or execution(public * org.seke.filmanias..serviceapi.*.find*(..)))"/>  
+    <aop:pointcut id="updatingBusinessService" expression="execution(public * org.seke..serviceapi.*.*(..)) and not (execution(public * org.seke..serviceapi.*.get*(..)) or execution(public * org.seke..serviceapi.*.find*(..)))"/>  
     <aop:advisor pointcut-ref="businessService" advice-ref="txAdvice" order="1"/>  
     <aop:advisor pointcut-ref="businessService" advice-ref="serviceContextStoreAdvice" order="2"/>  
     <aop:advisor pointcut-ref="businessService" advice-ref="errorHandlingAdvice" order="3"/>  

@@ -1,5 +1,5 @@
 Application MyApp {
-	basePackage=org.seke.filmanias
+	basePackage=org.seke
 	Module filmanias {
 
 		Entity Role {
@@ -11,6 +11,10 @@ Application MyApp {
 				save;
 				findAll;
 			}
+		}
+		
+		Service RoleService {
+			List<@Role> retrieveAll => RoleDAORepository.findAll;
 		}
 		
 		Entity User {
@@ -35,6 +39,15 @@ Application MyApp {
 				@User getUser(String username);
 				delete;				
 			}
+		}
+		
+		Service UserService {
+			saveUser(@User user) => UserDAORepository.save;
+			retrieveUser(Long id) => UserDAORepository.findById;
+			List<@User> retrieveAllUsers() => UserDAORepository.findAll;
+			@User retrieveUser(String username) => UserDAORepository.getUser;
+			updateUser(@User user) => UserDAORepository.save;
+			deleteUser(String username);
 		}
 
 		Entity Rating {
@@ -63,6 +76,10 @@ Application MyApp {
 			}
 		}
 
+		Service CommentService {
+			saveComment(@Comment comment, @User user);
+		}
+		
 		Entity Movie {
 			!auditable
 			Long id key;
@@ -78,7 +95,24 @@ Application MyApp {
 				save;
 				findAll;
 				List<@Movie> retrieveMoviesStartingWith(String movieName);
+				findById;
 			}
+		}
+		
+		Service MovieService {
+			saveMovie(MovieBeanDto movieBean);
+			saveMovie(@Movie movie) => MovieDAORepository.save; 
+			List<@Movie> retriveAllMovies() => MovieDAORepository.findAll;
+			@Movie retrieveMovie(long id) => MovieDAORepository.findById;
+			List<@Movie> retrieveMoviesStartingWith(String movieName) => MovieDAORepository.retrieveMoviesStartingWith;
+			addMovieComment(long movieId, @Comment comment,String username);
+		}
+
+		DataTransferObject MovieBeanDto {
+    		String name;
+			List<GenreBeanDto> allGenres;
+			Timestamp inputDate;
+			User user;
 		}
 
 		Entity Genre {
@@ -91,6 +125,20 @@ Application MyApp {
 				findAll;
 				@Genre findGenreByName(String name);
 			}
+		}
+		
+		Service GenreService {
+			save => GenreDAORepository.save;
+			getAllGenres => GenreDAORepository.findAll;
+			List<GenreBeanDto> getAllGenreBeans;
+			@Genre retrieveGenre(String name) => GenreDAORepository.findGenreByName;
+			updateGenre(@Genre genre) => GenreDAORepository.save;			
+		}
+		
+		DataTransferObject GenreBeanDto {
+    		Genre genre;
+			boolean assigned;
+			String name;
 		}
 	}
 }

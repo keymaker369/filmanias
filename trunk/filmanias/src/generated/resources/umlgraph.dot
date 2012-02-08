@@ -18,6 +18,109 @@ digraph G {
 			label = "filmanias"  
 			
 				
+	CommentService [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="0" port="p" bgcolor="#CCFF99" >
+	<tr><td>
+	<table border="0" cellspacing="1" cellpadding="1">
+		<tr><td> &laquo;Service&raquo; </td></tr>
+		<tr><td><font face="arialbd"  point-size="12.0"> CommentService </font></td></tr>
+	</table></td></tr>
+		<tr><td>
+			<table border="0" cellspacing="0" cellpadding="1">	
+		
+				<tr><td align="left">saveComment</td></tr>			
+
+			</table>		
+		</td></tr>
+	</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
+
+	GenreService [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="0" port="p" bgcolor="#CCFF99" >
+	<tr><td>
+	<table border="0" cellspacing="1" cellpadding="1">
+		<tr><td> &laquo;Service&raquo; </td></tr>
+		<tr><td><font face="arialbd"  point-size="12.0"> GenreService </font></td></tr>
+	</table></td></tr>
+		<tr><td>
+			<table border="0" cellspacing="0" cellpadding="1">	
+		
+				<tr><td align="left">save</td></tr>			
+
+				<tr><td align="left">getAllGenres</td></tr>			
+
+				<tr><td align="left">getAllGenreBeans</td></tr>			
+
+				<tr><td align="left">retrieveGenre</td></tr>			
+
+				<tr><td align="left">updateGenre</td></tr>			
+
+			</table>		
+		</td></tr>
+	</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
+
+	MovieService [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="0" port="p" bgcolor="#CCFF99" >
+	<tr><td>
+	<table border="0" cellspacing="1" cellpadding="1">
+		<tr><td> &laquo;Service&raquo; </td></tr>
+		<tr><td><font face="arialbd"  point-size="12.0"> MovieService </font></td></tr>
+	</table></td></tr>
+		<tr><td>
+			<table border="0" cellspacing="0" cellpadding="1">	
+		
+				<tr><td align="left">saveMovie</td></tr>			
+
+				<tr><td align="left">saveMovie</td></tr>			
+
+				<tr><td align="left">retriveAllMovies</td></tr>			
+
+				<tr><td align="left">retrieveMovie</td></tr>			
+
+				<tr><td align="left">retrieveMoviesStartingWith</td></tr>			
+
+				<tr><td align="left">addMovieComment</td></tr>			
+
+			</table>		
+		</td></tr>
+	</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
+
+	RoleService [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="0" port="p" bgcolor="#CCFF99" >
+	<tr><td>
+	<table border="0" cellspacing="1" cellpadding="1">
+		<tr><td> &laquo;Service&raquo; </td></tr>
+		<tr><td><font face="arialbd"  point-size="12.0"> RoleService </font></td></tr>
+	</table></td></tr>
+		<tr><td>
+			<table border="0" cellspacing="0" cellpadding="1">	
+		
+				<tr><td align="left">retrieveAll</td></tr>			
+
+			</table>		
+		</td></tr>
+	</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
+
+	UserService [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="0" port="p" bgcolor="#CCFF99" >
+	<tr><td>
+	<table border="0" cellspacing="1" cellpadding="1">
+		<tr><td> &laquo;Service&raquo; </td></tr>
+		<tr><td><font face="arialbd"  point-size="12.0"> UserService </font></td></tr>
+	</table></td></tr>
+		<tr><td>
+			<table border="0" cellspacing="0" cellpadding="1">	
+		
+				<tr><td align="left">saveUser</td></tr>			
+
+				<tr><td align="left">retrieveUser</td></tr>			
+
+				<tr><td align="left">retrieveAllUsers</td></tr>			
+
+				<tr><td align="left">retrieveUser</td></tr>			
+
+				<tr><td align="left">updateUser</td></tr>			
+
+				<tr><td align="left">deleteUser</td></tr>			
+
+			</table>		
+		</td></tr>
+	</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
+
 				
 				
 
@@ -88,6 +191,50 @@ digraph G {
 
 
 
+	GenreBeanDto [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="0" port="p" bgcolor="#FFCC99">
+	<tr><td>
+	<table border="0" cellspacing="1" cellpadding="1">
+		<tr><td> &laquo;DataTransferObject&raquo; </td></tr>
+		<tr><td><font face="arialbd"  point-size="12.0"> GenreBeanDto </font></td></tr>
+	</table></td></tr>
+	
+	
+		<tr><td>
+			<table border="0" cellspacing="0" cellpadding="1">	
+		
+		
+			
+				<tr><td align="left"> + genre : Genre </td></tr>
+			
+		
+		
+
+		
+			
+				<tr><td align="left"> + assigned : boolean </td></tr>
+			
+		
+		
+
+		
+			
+				<tr><td align="left"> + name : String </td></tr>
+			
+		
+		
+
+		
+		
+		
+			</table>		
+		</td></tr>
+	
+	
+	
+	</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
+
+
+
 	Movie [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="0" port="p" bgcolor="#FFCC33">
 	<tr><td>
 	<table border="0" cellspacing="1" cellpadding="1">
@@ -116,6 +263,57 @@ digraph G {
 		
 			
 				<tr><td align="left"> + rank : Double </td></tr>
+			
+		
+		
+
+		
+		
+		
+			</table>		
+		</td></tr>
+	
+	
+	
+	</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
+
+
+
+	MovieBeanDto [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="0" port="p" bgcolor="#FFCC99">
+	<tr><td>
+	<table border="0" cellspacing="1" cellpadding="1">
+		<tr><td> &laquo;DataTransferObject&raquo; </td></tr>
+		<tr><td><font face="arialbd"  point-size="12.0"> MovieBeanDto </font></td></tr>
+	</table></td></tr>
+	
+	
+		<tr><td>
+			<table border="0" cellspacing="0" cellpadding="1">	
+		
+		
+			
+				<tr><td align="left"> + name : String </td></tr>
+			
+		
+		
+
+		
+			
+				<tr><td align="left"> + allGenres : GenreBeanDto </td></tr>
+			
+		
+		
+
+		
+			
+				<tr><td align="left"> + inputDate : Timestamp </td></tr>
+			
+		
+		
+
+		
+			
+				<tr><td align="left"> + user : User </td></tr>
 			
 		
 		
@@ -312,6 +510,45 @@ digraph G {
 		Role -> User
 
 		
+	
+		edge [arrowtail="none" arrowhead = "open" headlabel = "" taillabel = "" style = "dashed"]
+		
+				RoleService -> Role
+		
+	
+
+	
+		edge [arrowtail="none" arrowhead = "open" headlabel = "" taillabel = "" style = "dashed"]
+		
+				UserService -> User
+		
+	
+
+	
+		edge [arrowtail="none" arrowhead = "open" headlabel = "" taillabel = "" style = "dashed"]
+		
+				CommentService -> Comment
+		
+				CommentService -> User
+		
+	
+
+	
+		edge [arrowtail="none" arrowhead = "open" headlabel = "" taillabel = "" style = "dashed"]
+		
+				MovieService -> Movie
+		
+				MovieService -> Comment
+		
+	
+
+	
+		edge [arrowtail="none" arrowhead = "open" headlabel = "" taillabel = "" style = "dashed"]
+		
+				GenreService -> Genre
+		
+	
+
 	
 	
 	}

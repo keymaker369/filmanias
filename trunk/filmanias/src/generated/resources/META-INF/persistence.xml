@@ -6,12 +6,12 @@
     <provider>org.hibernate.ejb.HibernatePersistence</provider>  
     <non-jta-data-source>java:comp/env/jdbc/applicationDS</non-jta-data-source>  
     <!-- annotated classes -->  
-    <class>org.seke.filmanias.filmanias.domain.Comment</class>  
-    <class>org.seke.filmanias.filmanias.domain.Genre</class>  
-    <class>org.seke.filmanias.filmanias.domain.Movie</class>  
-    <class>org.seke.filmanias.filmanias.domain.Rating</class>  
-    <class>org.seke.filmanias.filmanias.domain.Role</class>  
-    <class>org.seke.filmanias.filmanias.domain.User</class>  
+    <class>org.seke.filmanias.domain.Comment</class>  
+    <class>org.seke.filmanias.domain.Genre</class>  
+    <class>org.seke.filmanias.domain.Movie</class>  
+    <class>org.seke.filmanias.domain.Rating</class>  
+    <class>org.seke.filmanias.domain.Role</class>  
+    <class>org.seke.filmanias.domain.User</class>  
     <!-- properties  -->  
     <properties> 
       <property name="hibernate.dialect" value="org.fornax.cartridges.sculptor.framework.persistence.CustomHSQLDialect"/>  
