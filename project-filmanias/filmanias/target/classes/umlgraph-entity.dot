@@ -1,0 +1,317 @@
+
+	
+digraph G {             
+	fontsize = 10        
+	node [                          
+		fontsize = 10                
+		fontname="arial"
+		shape=plaintext
+	     ]        
+	     
+	edge [                            
+		fontsize = 10        
+	     ]        
+	
+	
+	
+		subgraph clusterfilmanias {
+			label = "filmanias"  
+			
+				
+				
+
+	Comment [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="0" port="p" bgcolor="#FFCC33">
+	<tr><td>
+	<table border="0" cellspacing="1" cellpadding="1">
+		<tr><td> &laquo;Entity&raquo; </td></tr>
+		<tr><td><font face="arialbd"  point-size="12.0"> Comment </font></td></tr>
+	</table></td></tr>
+	
+	
+		<tr><td>
+			<table border="0" cellspacing="0" cellpadding="1">	
+		
+		
+			
+				<tr><td align="left"> + content : String </td></tr>
+			
+		
+		
+
+		
+			
+				<tr><td align="left"> + inputDate : Date </td></tr>
+			
+		
+		
+
+		
+		
+		
+			</table>		
+		</td></tr>
+	
+	
+	
+	</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
+
+
+
+	Genre [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="0" port="p" bgcolor="#FFCC33">
+	<tr><td>
+	<table border="0" cellspacing="1" cellpadding="1">
+		<tr><td> &laquo;Entity&raquo; </td></tr>
+		<tr><td><font face="arialbd"  point-size="12.0"> Genre </font></td></tr>
+	</table></td></tr>
+	
+	
+		<tr><td>
+			<table border="0" cellspacing="0" cellpadding="1">	
+		
+		
+			 
+				<tr><td align="left"><font face="arialbd"> * name : String </font> </td></tr>			
+			
+		
+		
+
+		
+		
+		
+			</table>		
+		</td></tr>
+	
+	
+	
+	</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
+
+
+
+	Movie [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="0" port="p" bgcolor="#FFCC33">
+	<tr><td>
+	<table border="0" cellspacing="1" cellpadding="1">
+		<tr><td> &laquo;Entity&raquo; </td></tr>
+		<tr><td><font face="arialbd"  point-size="12.0"> Movie </font></td></tr>
+	</table></td></tr>
+	
+	
+		<tr><td>
+			<table border="0" cellspacing="0" cellpadding="1">	
+		
+		
+			
+				<tr><td align="left"> + name : String </td></tr>
+			
+		
+		
+
+		
+			
+				<tr><td align="left"> + inputDate : Date </td></tr>
+			
+		
+		
+
+		
+			
+				<tr><td align="left"> + rank : Double </td></tr>
+			
+		
+		
+
+		
+		
+		
+			</table>		
+		</td></tr>
+	
+	
+	
+	</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
+
+
+
+	Rating [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="0" port="p" bgcolor="#FFCC33">
+	<tr><td>
+	<table border="0" cellspacing="1" cellpadding="1">
+		<tr><td> &laquo;Entity&raquo; </td></tr>
+		<tr><td><font face="arialbd"  point-size="12.0"> Rating </font></td></tr>
+	</table></td></tr>
+	
+	
+		<tr><td>
+			<table border="0" cellspacing="0" cellpadding="1">	
+		
+		
+			
+				<tr><td align="left"> + mark : int </td></tr>
+			
+		
+		
+
+		
+			
+				<tr><td align="left"> + inputDate : Date </td></tr>
+			
+		
+		
+
+		
+		
+		
+			</table>		
+		</td></tr>
+	
+	
+	
+	</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
+
+
+
+	Role [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="0" port="p" bgcolor="#FFCC33">
+	<tr><td>
+	<table border="0" cellspacing="1" cellpadding="1">
+		<tr><td> &laquo;Entity&raquo; </td></tr>
+		<tr><td><font face="arialbd"  point-size="12.0"> Role </font></td></tr>
+	</table></td></tr>
+	
+	
+		<tr><td>
+			<table border="0" cellspacing="0" cellpadding="1">	
+		
+		
+			 
+				<tr><td align="left"><font face="arialbd"> * name : String </font> </td></tr>			
+			
+		
+		
+
+		
+		
+		
+			</table>		
+		</td></tr>
+	
+	
+	
+	</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
+
+
+
+	User [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="0" port="p" bgcolor="#FFCC33">
+	<tr><td>
+	<table border="0" cellspacing="1" cellpadding="1">
+		<tr><td> &laquo;Entity&raquo; </td></tr>
+		<tr><td><font face="arialbd"  point-size="12.0"> User </font></td></tr>
+	</table></td></tr>
+	
+	
+		<tr><td>
+			<table border="0" cellspacing="0" cellpadding="1">	
+		
+		
+			
+				<tr><td align="left"> + username : String </td></tr>
+			
+		
+		
+
+		
+			
+				<tr><td align="left"> + password : String </td></tr>
+			
+		
+		
+
+		
+			
+				<tr><td align="left"> + emailAdress : String </td></tr>
+			
+		
+		
+
+		
+			
+				<tr><td align="left"> + accountNonExpired : boolean </td></tr>
+			
+		
+		
+
+		
+			
+				<tr><td align="left"> + accountNonLocked : boolean </td></tr>
+			
+		
+		
+
+		
+			
+				<tr><td align="left"> + credentialsNonExpired : boolean </td></tr>
+			
+		
+		
+
+		
+			
+				<tr><td align="left"> + enabled : boolean </td></tr>
+			
+		
+		
+
+		
+		
+		
+			</table>		
+		</td></tr>
+	
+	
+	
+	</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
+
+
+			
+		}
+	
+
+	
+		
+	edge [arrowhead = "empty"]
+
+		
+		
+	edge [arrowhead = "none"]
+
+		
+	    	edge [arrowtail="none" arrowhead = "none" headlabel="" taillabel="0..n " labeldistance="2.0" labelangle="-30"]
+	
+		Comment -> Movie
+
+	    	edge [arrowtail="none" arrowhead = "none" headlabel="" taillabel="0..n " labeldistance="2.0" labelangle="-30"]
+	
+		Comment -> User
+
+	    	edge [arrowtail="none" arrowhead = "none" headlabel="0..n movies" taillabel="0..n " labeldistance="2.0" labelangle="-30"]
+	
+		Genre -> Movie
+
+	    	edge [arrowtail="none" arrowhead = "none" headlabel="0..n " taillabel="" labeldistance="2.0" labelangle="-30"]
+	
+		Movie -> Rating
+
+	    	edge [arrowtail="none" arrowhead = "none" headlabel="" taillabel="0..n movies" labeldistance="2.0" labelangle="-30"]
+	
+		Movie -> User
+
+	    	edge [arrowtail="none" arrowhead = "none" headlabel="" taillabel="0..n " labeldistance="2.0" labelangle="-30"]
+	
+		Rating -> User
+
+	    	edge [arrowtail="none" arrowhead = "none" headlabel="0..n " taillabel="0..n " labeldistance="2.0" labelangle="-30"]
+	
+		Role -> User
+
+		
+	
+	
+	}
+	
