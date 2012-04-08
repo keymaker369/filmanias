@@ -7,7 +7,6 @@ import org.fornax.cartridges.sculptor.framework.domain.Property;
 import org.seke.filmanias.filmanias.domain.CommentProperties.CommentProperty;
 import org.seke.filmanias.filmanias.domain.MovieProperties.MovieProperty;
 import org.seke.filmanias.filmanias.domain.RatingProperties.RatingProperty;
-import org.seke.filmanias.filmanias.domain.RoleProperties.RoleProperty;
 
 /**
  * This generated interface defines property names for all
@@ -61,6 +60,10 @@ public class UserProperties {
         return sharedInstance.version();
     }
 
+    public static Property<User> role() {
+        return sharedInstance.role();
+    }
+
     public static MovieProperty<User> movies() {
         return sharedInstance.movies();
     }
@@ -71,10 +74,6 @@ public class UserProperties {
 
     public static RatingProperty<User> ratings() {
         return sharedInstance.ratings();
-    }
-
-    public static RoleProperty<User> roles() {
-        return sharedInstance.roles();
     }
 
     /**
@@ -150,6 +149,11 @@ public class UserProperties {
                 owningClass);
         }
 
+        public Property<T> role() {
+            return new LeafProperty<T>(getParentPath(), "role", false,
+                owningClass);
+        }
+
         public MovieProperty<T> movies() {
             return new MovieProperty<T>(getParentPath(), "movies", owningClass);
         }
@@ -161,10 +165,6 @@ public class UserProperties {
 
         public RatingProperty<T> ratings() {
             return new RatingProperty<T>(getParentPath(), "ratings", owningClass);
-        }
-
-        public RoleProperty<T> roles() {
-            return new RoleProperty<T>(getParentPath(), "roles", owningClass);
         }
     }
 }
