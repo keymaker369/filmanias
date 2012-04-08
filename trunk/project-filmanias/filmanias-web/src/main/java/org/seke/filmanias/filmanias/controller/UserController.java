@@ -1,7 +1,6 @@
 package org.seke.filmanias.filmanias.controller;
 
 import java.util.List;
-import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -11,7 +10,6 @@ import org.seke.filmanias.filmanias.domain.Role;
 import org.seke.filmanias.filmanias.domain.User;
 import org.seke.filmanias.filmanias.exception.UserNotFoundException;
 import org.seke.filmanias.filmanias.model.UserCommand;
-import org.seke.filmanias.filmanias.serviceapi.RoleService;
 import org.seke.filmanias.filmanias.serviceapi.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,9 +27,6 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
-
-	@Autowired
-	private RoleService roleService;
 
 	@RequestMapping(value = "/user/add")
 	public ModelAndView openAddNewUserPage() {
@@ -83,29 +78,24 @@ public class UserController {
 		user.setCredentialsNonExpired(userToEdit.isCredentialsNonExpired());
 		user.setEnabled(userToEdit.isEnabled());
 
-		for (Role role : userToEdit.getRoles()) {
-			if (role.getName().equals("member"))
+		if (userToEdit.getRole() != null) {
+			if (userToEdit.getRole().toString().equals("MEMBER"))
 				user.setMember(true);
-			if (role.getName().equals("admin"))
+			if (userToEdit.getRole().toString().equals("ADMIN")) {
+				user.setMember(true);
 				user.setAdmin(true);
+			}
 		}
-
 		return new ModelAndView("/user/edit", "user", user);
 	}
 
 	@RequestMapping(value = "/user/edit", params = "updateUser", method = RequestMethod.POST)
-	public String updateUser(@Valid UserCommand command, BindingResult result, HttpSession httpSession) {
+	public String updateUser(@Valid UserCommand command, BindingResult result, HttpSession httpSession) throws UserNotFoundException {
 		if (result.hasErrors()) {
 			return "/user/edit";
 		}
 
-		User user = null;
-		try {
-			user = getUserService().retrieveUser(null, command.getId());
-		} catch (UserNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		User user = getUserService().retrieveUser(null,command.getId());
 		user.setPassword(httpSession.getAttribute("password").toString());
 		httpSession.removeAttribute("password");
 		user.setAccountNonExpired(command.isAccountNonExpired());
@@ -114,39 +104,14 @@ public class UserController {
 		user.setCredentialsNonExpired(command.isCredentialsNonExpired());
 		user.setEnabled(command.isEnabled());
 
-		List<Role> allRoles = getRoleService().retrieveAll(null);
-		for (Role role : allRoles) {
-			if (getRoleFromSetOfRolesByName(user.getRoles(), role.getName()) == null && role.getName().equals("member") && command.isMember()) {
-				user.getRoles().add(role);
-			}
-			if (getRoleFromSetOfRolesByName(user.getRoles(), role.getName()) == null && role.getName().equals("admin") && command.isAdmin()) {
-				user.getRoles().add(role);
-			}
-			if (getRoleFromSetOfRolesByName(user.getRoles(), role.getName()) != null && role.getName().equals("member") && !command.isMember()) {
-				removeRoleFromSet(user.getRoles(), role.getName());
-			}
-			if (getRoleFromSetOfRolesByName(user.getRoles(), role.getName()) != null && role.getName().equals("admin") && !command.isAdmin()) {
-				removeRoleFromSet(user.getRoles(), role.getName());
-			}
-		}
-
-		getUserService().updateUser(null,user);
+		if(command.isMember()) 
+			user.setRole(Role.MEMBER);
+		
+		if(command.isAdmin()) 
+			user.setRole(Role.ADMIN);
+		
+		getUserService().updateUser(null, user);
 		return "redirect:/index.jsp";
-	}
-
-	private Role getRoleFromSetOfRolesByName(Set<Role> roles, String name) {
-		for (Role role : roles) {
-			if (role.getName().equals(name))
-				return role;
-		}
-		return null;
-	}
-
-	private void removeRoleFromSet(Set<Role> roles, String roleName) {
-		for (Role role : roles) {
-			if (role.getName().equals(roleName))
-				roles.remove(role);
-		}
 	}
 
 	@RequestMapping(value = "/user/deleteUser", method = RequestMethod.GET, params = "username")
@@ -169,14 +134,6 @@ public class UserController {
 
 	public void setUserService(UserService userService) {
 		this.userService = userService;
-	}
-
-	public RoleService getRoleService() {
-		return roleService;
-	}
-
-	public void setRoleService(RoleService roleService) {
-		this.roleService = roleService;
 	}
 
 }

@@ -45,8 +45,6 @@
 
 				<li><a href="DomainModelDoc-filmanias.html#Role">Role</a></li>
 
-				<li><a href="DomainModelDoc-filmanias.html#RoleService">RoleService</a></li>
-
 				<li><a href="DomainModelDoc-filmanias.html#User">User</a></li>
 
 				<li><a href="DomainModelDoc-filmanias.html#UserService">UserService</a></li>
@@ -519,41 +517,6 @@
 		</ul>
 		</div>
 	
-	
-	</div>
-
-	<hr/>
-
-	<a name="RoleService"></a>
-	<h3>RoleService</h3>
-	<p></p>
-	
-	<div id="operation">
-	<b>retrieveAll</b>
-	<p></p>
-	
-		<div id="operation_parameters">
-		<p>Parameters:</p>
-		<ul>
-		
-	<li>
-	
-		org.fornax.cartridges.sculptor.framework.errorhandling.ServiceContext
-	
- ctx</li>
-
-		</ul>
-		</div>
-	
-	
-		<div id="operation_returns">
-		<p>Returns:</p>
-		<ul><li>
-	
-		List&lt;<a href="DomainModelDoc-filmanias.html#Role">Role</a>&gt;
-	
- </li></ul>
-		</div>
 	
 	</div>
 
@@ -1339,80 +1302,27 @@
 	<a name="Role"></a>
 	<h3>Role</h3>
 	
-	<p><i>Entity</i></p>
-	
-	
-
-
-	
-
-
+	<p><i>Enum</i></p>
 
 	<p></p>
 	<table>
 		<thead>
 			<th>Name</th>
-			<th>Type</th>
-			<th>Length</th>
-			<th>Mandatory</th>
-			<th>Changeable</th>
 			<th>Description</th>
 		</thead>
 
 	
+		<tr>
+			<td>MEMBER</td>
+			<td></td>
+		</tr>
 	
-	<tr>
-		<td>id</td>
-		<td>IDTYPE</td>
-		<td>&nbsp;</td>
-		<td>X</td>
-		<td>&nbsp;</td>
-		<td>
-		Generated unique id (GID pk)
-</td>
-	</tr>
-			
-
+		<tr>
+			<td>ADMIN</td>
+			<td></td>
+		</tr>
 	
-	<tr>
-		<td><b>name</b></td>
-		<td>String</td>
-		<td>100</td>
-		<td>X</td>
-		<td>&nbsp;</td>
-		<td>
-		
-</td>
-	</tr>
-			
-
-	
-	<tr>
-		<td>users</td>
-		<td>Set&lt;<a href="DomainModelDoc-filmanias.html#User">User</a>&gt;</td>
-		<td>&nbsp;</td>
-		<td>X</td>
-		<td>X</td>
-		<td></td>
-	</tr>
-			
-
-	
-	<tr>
-		<td>version</td>
-		<td>Long</td>
-		<td>&nbsp;</td>
-		<td>X</td>
-		<td>X</td>
-		<td>
-		Update counter used for optimistic locking
-</td>
-	</tr>
-			
-
-
 	</table>
-	
 	<hr/>
 
 	<a name="User"></a>
@@ -1565,10 +1475,10 @@
 
 	
 	<tr>
-		<td>roles</td>
-		<td>Set&lt;<a href="DomainModelDoc-filmanias.html#Role">Role</a>&gt;</td>
+		<td>role</td>
+		<td><a href="DomainModelDoc-filmanias.html#Role">Role</a></td>
 		<td>&nbsp;</td>
-		<td>X</td>
+		<td>&nbsp;</td>
 		<td>X</td>
 		<td></td>
 	</tr>

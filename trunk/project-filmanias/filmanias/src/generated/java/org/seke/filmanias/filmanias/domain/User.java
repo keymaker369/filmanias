@@ -3,6 +3,8 @@ package org.seke.filmanias.filmanias.domain;
 import org.fornax.cartridges.sculptor.framework.domain.AbstractDomainObject;
 import org.fornax.cartridges.sculptor.framework.domain.Identifiable;
 
+import java.lang.reflect.Field;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,10 +12,10 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
@@ -52,6 +54,9 @@ public class User extends AbstractDomainObject implements Identifiable {
     @Version
     @Column(name = "VERSION", nullable = false)
     private Long version;
+    @Column(name = "ROLE", length = 6)
+    @Enumerated(javax.persistence.EnumType.STRING)
+    private Role role;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     @NotNull
     private Set<Movie> movies = new HashSet<Movie>();
@@ -61,9 +66,6 @@ public class User extends AbstractDomainObject implements Identifiable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     @NotNull
     private Set<Rating> ratings = new HashSet<Rating>();
-    @ManyToMany(mappedBy = "users")
-    @NotNull
-    private Set<Role> roles = new HashSet<Role>();
 
     public User() {
     }
@@ -146,6 +148,14 @@ public class User extends AbstractDomainObject implements Identifiable {
 
     public void setVersion(Long version) {
         this.version = version;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public Set<Movie> getMovies() {
@@ -295,50 +305,20 @@ public class User extends AbstractDomainObject implements Identifiable {
 
     }
 
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
     /**
-     * Adds an object to the bidirectional many-to-many
-     * association in both ends.
-     * It is added the collection {@link #getRoles}
-     * at this side and to the collection
-     * {@link org.seke.filmanias.filmanias.domain.Role#getUsers}
-     * at the opposite side.
+     * This method is used by toString. It specifies what to
+     * include in the toString result.
+     * @return true if the field is to be included in toString
      */
-    public void addRole(Role roleElement) {
-        getRoles().add(roleElement);
-        roleElement.getUsers().add((User) this);
-    }
-
-    /**
-     * Removes an object from the bidirectional many-to-many
-     * association in both ends.
-     * It is removed from the collection {@link #getRoles}
-     * at this side and from the collection
-     * {@link org.seke.filmanias.filmanias.domain.Role#getUsers}
-     * at the opposite side.
-     */
-    public void removeRole(Role roleElement) {
-        getRoles().remove(roleElement);
-        roleElement.getUsers().remove((User) this);
-    }
-
-    /**
-     * Removes all object from the bidirectional
-     * many-to-many association in both ends.
-     * All elements are removed from the collection {@link #getRoles}
-     * at this side and from the collection
-     * {@link org.seke.filmanias.filmanias.domain.Role#getUsers}
-     * at the opposite side.
-     */
-    public void removeAllRoles() {
-        for (Role d : getRoles()) {
-            d.getUsers().remove((User) this);
+    protected boolean acceptToString(Field field) {
+        if (super.acceptToString(field)) {
+            return true;
+        } else {
+            if (field.getName().equals("role")) {
+                return true;
+            }
+            return false;
         }
-        getRoles().clear();
-
     }
 
     /**

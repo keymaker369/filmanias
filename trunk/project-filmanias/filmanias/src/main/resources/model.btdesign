@@ -3,21 +3,11 @@ Application MyApp {
 
 	Module filmanias {
 
-		Entity Role {
-			!auditable
-			String name key;
-			- Set<@User> users <-> roles;
-			
-			Repository RoleDAORepository {
-				save;
-				findAll;
-			}
+		enum Role {
+			MEMBER,
+			ADMIN
 		}
-		
-		Service RoleService {
-			List<@Role> retrieveAll => RoleDAORepository.findAll;
-		}
-		
+
 		Entity User {
 			!auditable
 			Long id key;
@@ -27,11 +17,11 @@ Application MyApp {
 			boolean accountNonExpired;
 			boolean accountNonLocked;
 			boolean credentialsNonExpired;
+			- @Role role nullable;
 			boolean enabled;
 			- Set<@Movie> movies <-> user;
 			- Set<@Comment> comments <-> user;
 			- Set<@Rating> ratings <-> user;
-			- Set<@Role> roles <-> users;
 			
 			Repository UserDAORepository {
 				save;

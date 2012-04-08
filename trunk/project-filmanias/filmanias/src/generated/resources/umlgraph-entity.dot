@@ -168,36 +168,6 @@ digraph G {
 
 
 
-	Role [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="0" port="p" bgcolor="#FFCC33">
-	<tr><td>
-	<table border="0" cellspacing="1" cellpadding="1">
-		<tr><td> &laquo;Entity&raquo; </td></tr>
-		<tr><td><font face="arialbd"  point-size="12.0"> Role </font></td></tr>
-	</table></td></tr>
-	
-	
-		<tr><td>
-			<table border="0" cellspacing="0" cellpadding="1">	
-		
-		
-			 
-				<tr><td align="left"><font face="arialbd"> * name : String </font> </td></tr>			
-			
-		
-		
-
-		
-		
-		
-			</table>		
-		</td></tr>
-	
-	
-	
-	</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
-
-
-
 	User [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="0" port="p" bgcolor="#FFCC33">
 	<tr><td>
 	<table border="0" cellspacing="1" cellpadding="1">
@@ -261,6 +231,10 @@ digraph G {
 		
 		
 		
+			<tr><td align="left"> + role : Role </td></tr>
+		
+
+		
 			</table>		
 		</td></tr>
 	
@@ -305,10 +279,6 @@ digraph G {
 	    	edge [arrowtail="none" arrowhead = "none" headlabel="" taillabel="0..n " labeldistance="2.0" labelangle="-30"]
 	
 		Rating -> User
-
-	    	edge [arrowtail="none" arrowhead = "none" headlabel="0..n " taillabel="0..n " labeldistance="2.0" labelangle="-30"]
-	
-		Role -> User
 
 		
 	

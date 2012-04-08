@@ -14,10 +14,10 @@ public class UserBuilder {
     private boolean accountNonLocked;
     private boolean credentialsNonExpired;
     private boolean enabled;
+    private Role role;
     private Set<Movie> movies = new HashSet<Movie>();
     private Set<Comment> comments = new HashSet<Comment>();
     private Set<Rating> ratings = new HashSet<Rating>();
-    private Set<Role> roles = new HashSet<Role>();
 
     public UserBuilder() {
     }
@@ -64,6 +64,11 @@ public class UserBuilder {
         return this;
     }
 
+    public UserBuilder role(Role role) {
+        this.role = role;
+        return this;
+    }
+
     /**
      * Adds an object to the to-many
      * association.
@@ -91,16 +96,6 @@ public class UserBuilder {
      */
     public UserBuilder addRating(Rating ratingElement) {
         getRatings().add(ratingElement);
-        return this;
-    }
-
-    /**
-     * Adds an object to the to-many
-     * association.
-     * It is added the collection {@link #getRoles}.
-     */
-    public UserBuilder addRole(Role roleElement) {
-        getRoles().add(roleElement);
         return this;
     }
 
@@ -132,6 +127,10 @@ public class UserBuilder {
         return enabled;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
     public Set<Movie> getMovies() {
         return movies;
     }
@@ -142,10 +141,6 @@ public class UserBuilder {
 
     public Set<Rating> getRatings() {
         return ratings;
-    }
-
-    public Set<Role> getRoles() {
-        return roles;
     }
 
     /**
@@ -168,13 +163,13 @@ public class UserBuilder {
 
         obj.setEnabled(enabled);
 
+        obj.setRole(role);
+
         obj.getMovies().addAll(movies);
 
         obj.getComments().addAll(comments);
 
         obj.getRatings().addAll(ratings);
-
-        obj.getRoles().addAll(roles);
 
         return obj;
     }
