@@ -16,6 +16,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
@@ -25,11 +27,20 @@ import javax.validation.constraints.NotNull;
 /**
 * Entity representing User.
 */
+
+@NamedQueries({ @NamedQuery(name = User.GET_USER_BY_USERNAME, 
+query = "Select u " +
+		"from User u " +
+		"where u.username = :username")})
+
 @Entity
 @Table(name = "USER")
 @EntityListeners({})
 public class User extends AbstractDomainObject implements Identifiable {
-    private static final long serialVersionUID = 1L;
+    
+	public static final String GET_USER_BY_USERNAME = "User.getUserByUsername";
+	
+	private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
