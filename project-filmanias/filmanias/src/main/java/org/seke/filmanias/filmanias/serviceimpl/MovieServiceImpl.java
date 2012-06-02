@@ -13,19 +13,17 @@ import org.seke.filmanias.filmanias.domain.User;
 import org.seke.filmanias.filmanias.exception.MovieNotFoundException;
 import org.seke.filmanias.filmanias.serviceapi.GenreService;
 import org.seke.filmanias.filmanias.serviceapi.UserService;
+import org.seke.filmanias.filmanias.serviceimplg.MovieServiceImplBase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Implementation of MovieService.
  */
 @Service("movieService")
 public class MovieServiceImpl extends MovieServiceImplBase {
-
-	@Autowired
-	@Qualifier("movieDAORepository")
-	private MovieDAORepository movieDAO;
 
 	@Autowired
 	@Qualifier("genreService")
@@ -42,20 +40,22 @@ public class MovieServiceImpl extends MovieServiceImplBase {
 	public MovieServiceImpl() {
 	}
 
+	@Transactional
 	public void saveMovie(ServiceContext ctx, MovieBean movieBean) {
 		
 		Movie movie = createMovieFromMovieBean(movieBean);
-		movieDAO.save(movie);
+		super.saveMovie(ctx, movie);
 		
 	}
 
+	@Transactional
 	public void addMovieComment(ServiceContext ctx, long movieId,
 			Comment comment, String username) {
 
 		User user = getUserService().retrieveUser(null, username);
 		Movie movie = null;
 		try {
-			movie = getMovieDAO().findById(movieId);
+			movie = super.retrieveMovie(ctx, movieId);
 		} catch (MovieNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -82,14 +82,6 @@ public class MovieServiceImpl extends MovieServiceImplBase {
 		return movie;
 	}
 	
-	public MovieDAORepository getMovieDAO() {
-		return movieDAO;
-	}
-
-	public void setMovieDAO(MovieDAORepository movieDAO) {
-		this.movieDAO = movieDAO;
-	}
-
 	public GenreService getGenreService() {
 		return genreService;
 	}

@@ -7,6 +7,7 @@ import org.seke.filmanias.filmanias.domain.CommentDAORepository;
 import org.seke.filmanias.filmanias.domain.User;
 import org.seke.filmanias.filmanias.domain.UserDAORepository;
 import org.seke.filmanias.filmanias.exception.UserNotFoundException;
+import org.seke.filmanias.filmanias.serviceimplg.CommentServiceImplBase;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

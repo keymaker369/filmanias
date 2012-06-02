@@ -8,9 +8,11 @@ import org.seke.filmanias.filmanias.domain.MovieDAORepository;
 import org.seke.filmanias.filmanias.domain.Rating;
 import org.seke.filmanias.filmanias.domain.RatingDAORepository;
 import org.seke.filmanias.filmanias.domain.User;
+import org.seke.filmanias.filmanias.serviceimplg.RatingServiceImplBase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Implementation of RatingService.
@@ -29,6 +31,7 @@ public class RatingServiceImpl extends RatingServiceImplBase {
 	public RatingServiceImpl() {
 	}
 
+	@Transactional
 	public void saveRating(ServiceContext ctx, Rating rating, User user) {
 
 		Movie movie = rating.getMovie();
