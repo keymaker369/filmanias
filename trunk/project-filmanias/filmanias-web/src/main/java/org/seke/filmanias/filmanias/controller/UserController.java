@@ -79,9 +79,9 @@ public class UserController {
 		user.setEnabled(userToEdit.isEnabled());
 
 		if (userToEdit.getRole() != null) {
-			if (userToEdit.getRole().toString().equals("MEMBER"))
+			if (userToEdit.getRole().toString().equals("member"))
 				user.setMember(true);
-			if (userToEdit.getRole().toString().equals("ADMIN")) {
+			if (userToEdit.getRole().toString().equals("admin")) {
 				user.setMember(true);
 				user.setAdmin(true);
 			}
@@ -105,10 +105,10 @@ public class UserController {
 		user.setEnabled(command.isEnabled());
 
 		if(command.isMember()) 
-			user.setRole(Role.MEMBER);
+			user.setRole(Role.member);
 		
 		if(command.isAdmin()) 
-			user.setRole(Role.ADMIN);
+			user.setRole(Role.admin);
 		
 		getUserService().updateUser(null, user);
 		return "redirect:/index.jsp";

@@ -51,7 +51,7 @@ public class RatingController {
 	}
 
 	@RequestMapping(value = "/movie/rateMovie", method = RequestMethod.POST, params = "saveMark")
-	public String addCommentPage(@ModelAttribute("addMarkCommand") AddMarkCommand command, Principal principal) {
+	public String saveMark(@ModelAttribute("addMarkCommand") AddMarkCommand command, Principal principal) {
 
 		Rating rating = RatingBuilder.rating().build();
 		rating.setMark(command.getMark());
