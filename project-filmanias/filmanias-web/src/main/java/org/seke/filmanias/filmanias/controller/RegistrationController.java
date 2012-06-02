@@ -27,7 +27,7 @@ public class RegistrationController {
 		binder.setValidator(new RegistrationValidator());
 	}
 
-	@RequestMapping(value = "/register")
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String openRegisterPage(@ModelAttribute("newUser") RegistrationCommand newUser) {
 		return "/register";
 	}

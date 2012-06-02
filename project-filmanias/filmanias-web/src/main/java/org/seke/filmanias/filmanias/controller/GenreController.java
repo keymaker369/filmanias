@@ -6,7 +6,6 @@ import javax.validation.Valid;
 
 import org.seke.filmanias.filmanias.controller.validation.GenreValidator;
 import org.seke.filmanias.filmanias.domain.Genre;
-import org.seke.filmanias.filmanias.domain.GenreBuilder;
 import org.seke.filmanias.filmanias.serviceapi.GenreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,7 +31,7 @@ public class GenreController {
 
 	@RequestMapping(value = "/genre/add")
 	public ModelAndView openAddGenrePage() {
-		Genre newGenre = GenreBuilder.genre().build();
+		Genre newGenre = new Genre("");
 		return new ModelAndView("/genre/add", "newGenre", newGenre);
 	}
 

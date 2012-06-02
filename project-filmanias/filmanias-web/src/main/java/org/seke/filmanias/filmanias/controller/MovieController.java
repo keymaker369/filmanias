@@ -59,8 +59,8 @@ public class MovieController {
 		}
 		
 		User tempUser = getUserService().retrieveUser(null, principal.getName());
-		movieBean = movieBean.withUser(tempUser);
-		movieBean = movieBean.withInputDate(new Timestamp(System.currentTimeMillis()));
+		movieBean.setUser(tempUser);
+		movieBean.setInputDate(new Timestamp(System.currentTimeMillis()));
 		getMovieService().saveMovie(null, movieBean);
 		return new ModelAndView("redirect:/movie/movies", "newMovie", movieBean);
 	}
