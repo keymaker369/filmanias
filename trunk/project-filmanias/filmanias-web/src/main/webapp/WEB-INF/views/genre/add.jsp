@@ -8,7 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<sf:form action="/filmania/genre/add" modelAttribute="newGenre" method="POST">
+	<c:url value="/genre/add" var="genreAdd"/>
+	<sf:form action="${genreAdd}" modelAttribute="newGenre" method="POST">
 		<table>
 			<tr>
 				<td>name:</td>
