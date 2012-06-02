@@ -1,11 +1,9 @@
 package org.seke.filmanias.filmanias.domain;
 
-import org.fornax.cartridges.sculptor.framework.domain.AbstractDomainObject;
-import org.fornax.cartridges.sculptor.framework.domain.Identifiable;
-
 import java.lang.reflect.Field;
-
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -21,8 +19,13 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
-
 import javax.validation.constraints.NotNull;
+
+import org.fornax.cartridges.sculptor.framework.domain.AbstractDomainObject;
+import org.fornax.cartridges.sculptor.framework.domain.Identifiable;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.GrantedAuthorityImpl;
+import org.springframework.security.core.userdetails.UserDetails;
 
 /**
 * Entity representing User.
@@ -36,7 +39,7 @@ query = "Select u " +
 @Entity
 @Table(name = "USER")
 @EntityListeners({})
-public class User extends AbstractDomainObject implements Identifiable {
+public class User extends AbstractDomainObject implements Identifiable, UserDetails {
     
 	public static final String GET_USER_BY_USERNAME = "User.getUserByUsername";
 	
@@ -340,5 +343,20 @@ public class User extends AbstractDomainObject implements Identifiable {
         return getId();
     }
 
-    // This comment was generated from SpecialCases.xpt 
+	@Override
+	public Collection<GrantedAuthority> getAuthorities() {
+		Collection<GrantedAuthority> authorities = new LinkedList<GrantedAuthority>();
+		
+		if (role == Role.member) {
+			authorities.add(new GrantedAuthorityImpl(role.toString()));
+		}
+		
+		if (role == Role.admin) {
+			authorities.add(new GrantedAuthorityImpl(Role.member.toString()));
+			authorities.add(new GrantedAuthorityImpl(role.toString()));
+		}
+		
+		return authorities;
+	}
+
 }

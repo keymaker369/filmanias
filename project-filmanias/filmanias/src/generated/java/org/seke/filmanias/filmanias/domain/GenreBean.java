@@ -18,7 +18,7 @@ public class GenreBean extends AbstractDomainObject {
     @NotNull
     private String name;
 
-    protected GenreBean() {
+    public GenreBean() {
     }
 
     public GenreBean(Genre genre, boolean assigned, String name) {
@@ -49,6 +49,18 @@ public class GenreBean extends AbstractDomainObject {
     public String getName() {
         return name;
     }
+    
+    public void setGenre(Genre genre) {
+		this.genre = genre;
+	}
+    
+    public void setAssigned(boolean assigned) {
+		this.assigned = assigned;
+	}
+    
+    public void setName(String name) {
+		this.name = name;
+	}
 
     /**
      * Creates a copy of this instance, but with another genre.

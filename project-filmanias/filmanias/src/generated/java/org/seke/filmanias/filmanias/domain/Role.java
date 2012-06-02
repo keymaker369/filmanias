@@ -6,8 +6,8 @@ import java.io.Serializable;
 * Enum for Role
 */
 public enum Role implements Serializable {
-    MEMBER,
-    ADMIN;
+    member,
+    admin;
 
     /**
      */
