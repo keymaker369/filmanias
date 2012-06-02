@@ -11,7 +11,7 @@
 	<display:table id="user" list="${users}">
 		<display:column title="id" property="id"/>
 		<display:column title="username" property="username"/>
-		<display:column title="email" property="email"/>
+		<display:column title="email" property="emailAdress"/>
 		<display:column title="acc non exp">
 			<c:choose>
 				<c:when test="${user.accountNonExpired}">
