@@ -1,6 +1,7 @@
 package org.seke.filmanias.filmanias.repositoryimpl;
 
 import org.seke.filmanias.filmanias.domain.Movie;
+import org.seke.filmanias.filmanias.repositoryimplg.MovieDAORepositoryBase;
 
 import org.springframework.stereotype.Repository;
 
