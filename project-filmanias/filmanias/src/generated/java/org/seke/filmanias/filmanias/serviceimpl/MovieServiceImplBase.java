@@ -1,4 +1,4 @@
-package org.seke.filmanias.filmanias.serviceimpl;
+package org.seke.filmanias.filmanias.serviceimplg;
 
 import org.fornax.cartridges.sculptor.framework.errorhandling.ServiceContext;
 
@@ -8,6 +8,7 @@ import org.seke.filmanias.filmanias.exception.MovieNotFoundException;
 import org.seke.filmanias.filmanias.serviceapi.MovieService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 

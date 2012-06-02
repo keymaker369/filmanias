@@ -17,7 +17,9 @@
     <properties> 
       <property name="hibernate.dialect" value="org.fornax.cartridges.sculptor.framework.persistence.CustomHSQLDialect"/>  
       <property name="query.substitutions" value="true 1, false 0"/>  
-      <property name="hibernate.show_sql" value="true"/>  
+      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.format_sql" value="true"/>  
+      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
       <!-- <property name="hibernate.hbm2ddl.auto" value="create-drop"/> -->  
       <property name="hibernate.cache.use_query_cache" value="true"/>  
       <property name="hibernate.cache.region_prefix" value=""/>  

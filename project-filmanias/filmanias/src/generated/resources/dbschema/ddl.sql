@@ -1,49 +1,46 @@
 
     alter table COMMENT 
-        drop constraint FK_COMMENT_USER;
+        drop 
+        foreign key FK_COMMENT_USER;
 
     alter table COMMENT 
-        drop constraint FK_COMMENT_MOVIE;
+        drop 
+        foreign key FK_COMMENT_MOVIE;
 
     alter table GENRE_MOVY 
-        drop constraint FK_GENRE_MOVY_GENRE;
+        drop 
+        foreign key FK_GENRE_MOVY_GENRE;
 
     alter table GENRE_MOVY 
-        drop constraint FK_GENRE_MOVY_MOVY;
+        drop 
+        foreign key FK_GENRE_MOVY_MOVY;
 
     alter table MOVIE 
-        drop constraint FK_MOVIE_USER;
+        drop 
+        foreign key FK_MOVIE_USER;
 
     alter table RATING 
-        drop constraint FK_RATING_USER;
+        drop 
+        foreign key FK_RATING_USER;
 
     alter table RATING 
-        drop constraint FK_MOVIE_RATING_MOVIE;
+        drop 
+        foreign key FK_MOVIE_RATING_MOVIE;
 
-    alter table ROLE_USER 
-        drop constraint FK_ROLE_USER_ROLE;
+    drop table if exists COMMENT;
 
-    alter table ROLE_USER 
-        drop constraint FK_ROLE_USER_USER;
+    drop table if exists GENRE;
 
-    drop table COMMENT if exists;
+    drop table if exists GENRE_MOVY;
 
-    drop table GENRE if exists;
+    drop table if exists MOVIE;
 
-    drop table GENRE_MOVY if exists;
+    drop table if exists RATING;
 
-    drop table MOVIE if exists;
-
-    drop table RATING if exists;
-
-    drop table ROLE if exists;
-
-    drop table ROLE_USER if exists;
-
-    drop table USER if exists;
+    drop table if exists USER;
 
     create table COMMENT (
-        ID bigint ,
+        ID bigint not null auto_increment,
         CONTENT varchar(100) not null,
         INPUTDATE date not null,
         VERSION bigint not null,
@@ -54,11 +51,10 @@
     );
 
     create table GENRE (
-        ID bigint ,
-        NAME varchar(100) not null,
+        ID bigint not null auto_increment,
+        NAME varchar(100) not null unique,
         VERSION bigint not null,
-        primary key (ID),
-        unique (NAME)
+        primary key (ID)
     );
 
     create table GENRE_MOVY (
@@ -68,17 +64,17 @@
     );
 
     create table MOVIE (
-        ID bigint ,
+        ID bigint not null auto_increment,
         INPUTDATE date not null,
         NAME varchar(100) not null,
-        RANK double not null,
+        RANK double precision not null,
         VERSION bigint not null,
         USER bigint,
         primary key (ID)
     );
 
     create table RATING (
-        ID bigint ,
+        ID bigint not null auto_increment,
         INPUTDATE date not null,
         MARK integer not null,
         VERSION bigint not null,
@@ -88,75 +84,58 @@
         unique (ID, USER, MOVIE)
     );
 
-    create table ROLE (
-        ID bigint ,
-        NAME varchar(100) not null,
-        VERSION bigint not null,
-        primary key (ID),
-        unique (NAME)
-    );
-
-    create table ROLE_USER (
-        ROLE bigint not null,
-        USER bigint not null,
-        primary key (ROLE, USER)
-    );
-
     create table USER (
-        ID bigint ,
+        ID bigint not null auto_increment,
         ACCOUNTNONEXPIRED bit not null,
         ACCOUNTNONLOCKED bit not null,
         CREDENTIALSNONEXPIRED bit not null,
         EMAILADRESS varchar(100) not null,
         ENABLED bit not null,
         PASSWORD varchar(100) not null,
+        ROLE varchar(6),
         USERNAME varchar(100) not null,
         VERSION bigint not null,
         primary key (ID)
     );
 
     alter table COMMENT 
+        add index FK_COMMENT_USER (USER), 
         add constraint FK_COMMENT_USER 
         foreign key (USER) 
-        references USER;
+        references USER (ID);
 
     alter table COMMENT 
+        add index FK_COMMENT_MOVIE (MOVIE), 
         add constraint FK_COMMENT_MOVIE 
         foreign key (MOVIE) 
-        references MOVIE;
+        references MOVIE (ID);
 
     alter table GENRE_MOVY 
+        add index FK_GENRE_MOVY_GENRE (GENRE), 
         add constraint FK_GENRE_MOVY_GENRE 
         foreign key (GENRE) 
         references GENRE (ID);
 
     alter table GENRE_MOVY 
+        add index FK_GENRE_MOVY_MOVY (MOVY), 
         add constraint FK_GENRE_MOVY_MOVY 
         foreign key (MOVY) 
         references MOVIE (ID);
 
     alter table MOVIE 
+        add index FK_MOVIE_USER (USER), 
         add constraint FK_MOVIE_USER 
         foreign key (USER) 
         references USER (ID);
 
     alter table RATING 
+        add index FK_RATING_USER (USER), 
         add constraint FK_RATING_USER 
         foreign key (USER) 
         references USER (ID);
 
     alter table RATING 
+        add index FK_MOVIE_RATING_MOVIE (MOVIE), 
         add constraint FK_MOVIE_RATING_MOVIE 
         foreign key (MOVIE) 
         references MOVIE (ID);
-
-    alter table ROLE_USER 
-        add constraint FK_ROLE_USER_ROLE 
-        foreign key (ROLE) 
-        references ROLE (ID);
-
-    alter table ROLE_USER 
-        add constraint FK_ROLE_USER_USER 
-        foreign key (USER) 
-        references USER (ID);
-
