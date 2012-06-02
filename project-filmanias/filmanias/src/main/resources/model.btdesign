@@ -113,7 +113,7 @@ Application MyApp {
 
 		Entity Genre {
 			!auditable
-			String name key;
+			String name key nullable;
 			- Set<@Movie> movies <-> genres;
 			
 			Repository GenreDAORepository {
