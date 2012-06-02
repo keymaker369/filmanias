@@ -9,7 +9,8 @@
 <body>
 	${movie.name}
 	<br />
-	<sf:form action="/filmania/movie/addComment" method="POST" modelAttribute="addCommentCommand">
+	<c:url value="/movie/addComment" var="addComment"/>
+	<sf:form action="${addComment}" method="POST" modelAttribute="addCommentCommand">
 		<input type="hidden" name="movieId" value="${movie.id}"/>
 		<sf:textarea path="comment"/>
 		<sf:errors path="comment"/>

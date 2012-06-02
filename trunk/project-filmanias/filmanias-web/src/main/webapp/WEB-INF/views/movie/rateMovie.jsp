@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,7 +10,8 @@
 <body>
 ${movie.name}
 	<br />
-	<sf:form action="/filmania/movie/rateMovie" method="POST" modelAttribute="addMarkCommand">
+	<c:url value="/movie/rateMovie" var="rateMovie"/>
+	<sf:form action="${rateMovie}" method="POST" modelAttribute="addMarkCommand">
 		<input type="hidden" name="movieId" value="${movie.id}"/>
 		<sf:select path="mark">
 			<sf:option value="1">1</sf:option>
