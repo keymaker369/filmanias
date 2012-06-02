@@ -5,11 +5,13 @@ import org.fornax.cartridges.sculptor.framework.errorhandling.ServiceContext;
 import org.seke.filmanias.filmanias.domain.Genre;
 import org.seke.filmanias.filmanias.domain.GenreBean;
 import org.seke.filmanias.filmanias.domain.GenreDAORepository;
+import org.seke.filmanias.filmanias.serviceimplg.GenreServiceImplBase;
 import org.seke.filmanias.filmanias.utils.GenreUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,5 +47,5 @@ public class GenreServiceImpl extends GenreServiceImplBase {
 	public void setGenreDAO(GenreDAORepository genreDAO) {
 		this.genreDAO = genreDAO;
 	}
-
+	
 }
