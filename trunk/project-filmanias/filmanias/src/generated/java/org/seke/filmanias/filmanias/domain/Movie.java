@@ -18,6 +18,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -62,7 +63,10 @@ public class Movie extends AbstractDomainObject implements Identifiable {
     @ForeignKey(name = "FK_MOVIE_RATING_MOVIE", inverseName = "FK_MOVIE_RATING_RATING")
     @NotNull
     private Set<Rating> ratings = new HashSet<Rating>();
-    @ManyToMany(mappedBy = "movies")
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "GENRE_MOVY", joinColumns = @JoinColumn(name = "MOVY")
+    , inverseJoinColumns = @JoinColumn(name = "GENRE")
+    )
     @NotNull
     private Set<Genre> genres = new HashSet<Genre>();
 

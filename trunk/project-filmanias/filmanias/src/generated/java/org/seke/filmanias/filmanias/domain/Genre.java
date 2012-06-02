@@ -6,6 +6,7 @@ import org.fornax.cartridges.sculptor.framework.domain.AbstractDomainObject;
 import org.fornax.cartridges.sculptor.framework.domain.Identifiable;
 
 import org.hibernate.annotations.ForeignKey;
+import org.seke.filmanias.filmanias.repositoryimpl.GenreDAORepositoryImpl;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,6 +21,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
@@ -28,17 +31,21 @@ import javax.validation.constraints.NotNull;
 /**
 * Entity representing Genre.
 */
+@NamedQueries({ @NamedQuery(name = Genre.GET_GENRE_BY_NAME, 
+query = "Select g from Genre g where g.name= :name ")})
 @Entity
 @Table(name = "GENRE")
 @EntityListeners({})
 public class Genre extends AbstractDomainObject implements Identifiable {
     private static final long serialVersionUID = 1L;
+    
+    public static final String GET_GENRE_BY_NAME = "Genre.getGenreByName";
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private Long id;
     @Column(name = "NAME", nullable = false, length = 100, unique = true)
-    @NotNull
     private String name;
     @Version
     @Column(name = "VERSION", nullable = false)
@@ -51,7 +58,7 @@ public class Genre extends AbstractDomainObject implements Identifiable {
     @NotNull
     private Set<Movie> movies = new HashSet<Movie>();
 
-    protected Genre() {
+    public Genre() {
     }
 
     public Genre(String name) {
@@ -63,16 +70,8 @@ public class Genre extends AbstractDomainObject implements Identifiable {
     public Long getId() {
         return id;
     }
-
-    /**
-     * The id is not intended to be changed or assigned manually, but
-     * for test purpose it is allowed to assign the id.
-     */
-    protected void setId(Long id) {
-        if ((this.id != null) && !this.id.equals(id)) {
-            throw new IllegalArgumentException(
-                "Not allowed to change the id property.");
-        }
+   
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -80,6 +79,10 @@ public class Genre extends AbstractDomainObject implements Identifiable {
         return name;
     }
 
+	public void setName(String name) {
+		this.name = name;
+	}
+    
     public Long getVersion() {
         return version;
     }
