@@ -8,7 +8,8 @@
 <title>Edit user</title>
 </head>
 <body>
-	<sf:form action="/filmania/user/edit" modelAttribute="user" method="POST">
+	<c:url value="/user/edit" var="editUser"/>
+	<sf:form action="${editUser}" modelAttribute="user" method="POST">
 		<sf:hidden path="id"/>
 		<table>
 			<tr>
