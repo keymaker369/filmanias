@@ -10,7 +10,8 @@
 <title>View all movies</title>
 </head>
 <body>
-	<form action="/filmania/movie/movies" method="POST">
+	<c:url value="/movie/movies" var="foundMovies"/>
+	<form action="${foundMovies}" method="POST">
 		<label>Naziv filma:</label>
 		<input type="text" name="movieName">
 		<input type="submit" name="searchMovie" value="search">		
@@ -30,11 +31,11 @@
 		<display:column title="grade" property="rank"/>
 		<display:column>|</display:column>
 		<display:column>
-			<a href="/filmania/movie/addComment?idMovie=${movie.id}">Comment movie</a>
+			<a href='<c:url value="/movie/addComment?idMovie=${movie.id}"/>'>Comment movie</a>
 		</display:column>
 		<display:column>|</display:column>
 		<display:column>
-			<a href="/filmania/movie/rateMovie?idMovie=${movie.id}">Rate movie</a>
+			<a href='<c:url value="/movie/rateMovie?idMovie=${movie.id}"/>'>Rate movie</a>
 		</display:column>
 	</display:table>
 
