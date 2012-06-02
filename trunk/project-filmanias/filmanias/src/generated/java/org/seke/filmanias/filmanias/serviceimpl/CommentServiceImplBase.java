@@ -1,4 +1,4 @@
-package org.seke.filmanias.filmanias.serviceimpl;
+package org.seke.filmanias.filmanias.serviceimplg;
 
 import org.seke.filmanias.filmanias.serviceapi.CommentService;
 

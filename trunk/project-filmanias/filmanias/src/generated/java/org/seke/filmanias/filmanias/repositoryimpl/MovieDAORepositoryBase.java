@@ -1,4 +1,4 @@
-package org.seke.filmanias.filmanias.repositoryimpl;
+package org.seke.filmanias.filmanias.repositoryimplg;
 
 import org.fornax.cartridges.sculptor.framework.accessapi.FindAllAccess2;
 import org.fornax.cartridges.sculptor.framework.accessapi.FindByIdAccess;

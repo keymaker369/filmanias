@@ -1,4 +1,4 @@
-package org.seke.filmanias.filmanias.serviceimpl;
+package org.seke.filmanias.filmanias.serviceimplg;
 
 import org.fornax.cartridges.sculptor.framework.errorhandling.ServiceContext;
 
@@ -7,6 +7,7 @@ import org.seke.filmanias.filmanias.domain.GenreDAORepository;
 import org.seke.filmanias.filmanias.serviceapi.GenreService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -34,6 +35,7 @@ public abstract class GenreServiceImplBase implements GenreService {
     /**
      * Delegates to {@link org.seke.filmanias.filmanias.domain.GenreDAORepository#save}
      */
+    @Transactional
     public Genre save(ServiceContext ctx, Genre entity) {
         return genreDAORepository.save(entity);
 
@@ -58,8 +60,19 @@ public abstract class GenreServiceImplBase implements GenreService {
     /**
      * Delegates to {@link org.seke.filmanias.filmanias.domain.GenreDAORepository#save}
      */
+    @Transactional
     public Genre updateGenre(ServiceContext ctx, Genre genre) {
-        return genreDAORepository.save(genre);
+    	List<Genre> genres = genreDAORepository.findAll();
+    	Genre genreToUpdate = null;
+    	for (Genre g : genres) {
+			if(g.getId().equals(genre.getId()))
+				genreToUpdate = g;
+				
+		}
+    	
+    	genreToUpdate.setName(genre.getName());
+    	
+    	return genreDAORepository.save(genreToUpdate);
 
     }
 }

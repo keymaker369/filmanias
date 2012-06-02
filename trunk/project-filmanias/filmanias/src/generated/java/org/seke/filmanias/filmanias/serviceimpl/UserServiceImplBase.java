@@ -1,4 +1,4 @@
-package org.seke.filmanias.filmanias.serviceimpl;
+package org.seke.filmanias.filmanias.serviceimplg;
 
 import org.fornax.cartridges.sculptor.framework.errorhandling.ServiceContext;
 
@@ -8,6 +8,7 @@ import org.seke.filmanias.filmanias.exception.UserNotFoundException;
 import org.seke.filmanias.filmanias.serviceapi.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -35,6 +36,7 @@ public abstract class UserServiceImplBase implements UserService {
     /**
      * Delegates to {@link org.seke.filmanias.filmanias.domain.UserDAORepository#save}
      */
+    @Transactional
     public User saveUser(ServiceContext ctx, User user) {
         return userDAORepository.save(user);
 
@@ -68,6 +70,7 @@ public abstract class UserServiceImplBase implements UserService {
     /**
      * Delegates to {@link org.seke.filmanias.filmanias.domain.UserDAORepository#save}
      */
+    @Transactional
     public User updateUser(ServiceContext ctx, User user) {
         return userDAORepository.save(user);
 
