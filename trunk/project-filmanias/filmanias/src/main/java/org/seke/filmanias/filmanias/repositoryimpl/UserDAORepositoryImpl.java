@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Query;
 
 import org.seke.filmanias.filmanias.domain.User;
+import org.seke.filmanias.filmanias.repositoryimplg.UserDAORepositoryBase;
 import org.springframework.stereotype.Repository;
 
 /**
