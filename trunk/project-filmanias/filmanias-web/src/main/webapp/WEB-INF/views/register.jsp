@@ -8,7 +8,8 @@
 <title>Registration</title>
 </head>
 <body>
-<sf:form action="/filmania/register" modelAttribute="newUser" method="POST">
+<c:url value="/register" var="register"/>
+<sf:form action="${register}" modelAttribute="newUser" method="POST">
 	<table>
 		<tr>
 			<td>Username:</td>
